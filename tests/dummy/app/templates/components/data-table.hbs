@@ -1,0 +1,20 @@
+<h1>{{table_name}}</h1>
+
+<table>
+  <th>
+    {{#each options.columns as |column|}}
+      <td>
+        <strong>{{column.name}}</strong>
+      </td>
+    {{/each}}
+  </th>
+  {{#each records as |record|}}
+    <tr>
+      {{#each options.columns as |column|}}
+        <td>
+          {{data-table-field record=record column=column options=options table_name=table_name}}
+        </td>
+      {{/each}}
+    </tr>
+  {{/each}}
+</table>
