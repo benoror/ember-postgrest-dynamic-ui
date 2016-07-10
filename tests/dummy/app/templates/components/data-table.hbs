@@ -1,13 +1,13 @@
 <h1>{{table_name}}</h1>
 
-<table>
-  <th>
+<table class="table">
+  <tr>
     {{#each options.columns as |column|}}
-      <td>
+      <th>
         <strong>{{column.name}}</strong>
-      </td>
+      </th>
     {{/each}}
-  </th>
+  </tr>
   {{#each records as |record|}}
     <tr>
       {{#each options.columns as |column|}}
