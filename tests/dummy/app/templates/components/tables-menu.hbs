@@ -1,3 +1,3 @@
 {{#each tables as |table|}}
-  [{{link-to table.name 'table' table.name}}]
+  <li>{{#link-to 'table' table.name}}{{table.name}}{{/link-to}}</li>
 {{/each}}
