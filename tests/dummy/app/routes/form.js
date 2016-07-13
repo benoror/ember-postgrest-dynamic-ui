@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import PostgRESTRouteMixin from 'ember-postgrest-dynamic-ui/mixins/postgrest-route';
 
 const {
   RSVP,
@@ -7,19 +8,11 @@ const {
   inject
 } = Ember;
 
-export default Ember.Route.extend({
-  postgrest: inject.service(),
-
+export default Ember.Route.extend(PostgRESTRouteMixin, {
   model(params) {
     return RSVP.hash({
-      options: get(this, 'postgrest').request(`/${params.table_name}`, {
-        method: 'OPTIONS'
-      }),
-      record: get(this, 'postgrest').request(`/${params.table_name}?id=eq.${params.id}`, {
-        headers: {
-          'Prefer': 'plurality=singular'
-        }
-      })
+      options: this.getOptions(params.table_name),
+      record: this.getRecord(params.table_name, params.id)
       // fields: [
       //   {
       //     key: 'title',
@@ -44,18 +37,7 @@ export default Ember.Route.extend({
   setupController(controller, model) {
     this._super(controller, model);
     controller.setProperties(model);
-    const fields = model.fields || model.options.columns.map((field) => {
-      return {
-        key: field.name,
-        type: 'input', //field.type
-        templateOptions: {
-          type: 'text',
-          label: Ember.String.capitalize(field.name),
-          placeholder: Ember.String.capitalize(field.name)
-        }
-      };
-    });
-    set(controller, 'fields', fields);
+    set(controller, 'fields', this.setupFields(model));
   }
 
 });

@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import PostgRESTRouteMixin from 'ember-postgrest-dynamic-ui/mixins/postgrest-route';
 
 const {
   Route,
@@ -7,12 +8,10 @@ const {
   inject
 } = Ember;
 
-export default Route.extend({
-  postgrest: inject.service(),
-
+export default Route.extend(PostgRESTRouteMixin, {
   model() {
     return RSVP.hash({
-      tables: get(this, 'postgrest').request('/')
+      tables: this.getTables()
     });
   },
 
