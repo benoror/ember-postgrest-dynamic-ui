@@ -8,9 +8,14 @@ This README outlines the details of collaborating on this Ember addon.
 * `npm install`
 * `bower install`
 
+### Install PostgREST
+
+Instructions at: [http://postgrest.com/](http://postgrest.com/)
+
 ## Running
 
 * `ember server`
+* [Run PostgREST](http://postgrest.com/install/server/#running-the-server)
 * Visit your app at http://localhost:4200.
 
 ## Running Tests
