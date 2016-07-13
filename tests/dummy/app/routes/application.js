@@ -1,16 +1,18 @@
 import Ember from 'ember';
 
 const {
+  Route,
   RSVP,
-  get
+  get,
+  inject
 } = Ember;
 
-export default Ember.Route.extend({
-  ajax: Ember.inject.service(),
+export default Route.extend({
+  postgrest: inject.service(),
 
   model() {
     return RSVP.hash({
-      tables: get(this, 'ajax').request('http://localhost:3000/')
+      tables: get(this, 'postgrest').request('/')
     });
   },
 
