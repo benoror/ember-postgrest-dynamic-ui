@@ -1,5 +1,3 @@
-import PostgRESTSerializer from "ember-postgrest/serializer";
+import PostgRESTSerializer from "ember-postgrest-dynamic-ui/serializer";
 
-export default PostgRESTSerializer.extend({
-  host: 'http://localhost:3000'
-});
+export default PostgRESTSerializer.extend();

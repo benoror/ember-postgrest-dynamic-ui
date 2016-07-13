@@ -1,5 +1,5 @@
 {
-  "name": "ember-postgrest",
+  "name": "ember-postgrest-dynamic-ui",
   "dependencies": {
     "ember": "~2.5.0",
     "ember-cli-shims": "0.1.1",

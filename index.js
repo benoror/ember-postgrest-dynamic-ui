@@ -2,5 +2,5 @@
 'use strict';
 
 module.exports = {
-  name: 'ember-postgrest'
+  name: 'ember-postgrest-dynamic-ui'
 };
