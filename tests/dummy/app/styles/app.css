@@ -2,3 +2,7 @@
 Dashboard: http://getbootstrap.com/examples/dashboard/
  */
 @import 'dashboard.css';
+
+.json-editor-fix {
+  height: 600px;
+}
