@@ -1,9 +1,9 @@
-<h3>Default Views</h3>
+<h3>Tables</h3>
 
 <ul class="nav nav-sidebar">
   {{#each tables as |table|}}
     {{!-- <li class="active"><a href="#">Overview <span class="sr-only">(current)</span></a></li> --}}
-    {{#link-to 'table' table.name tagName="li" href=false}}
+    {{#link-to 'templates' table.name tagName="li" href=false}}
       <a {{bind-attr href="view.href"}} style="cursor:pointer;">{{table.name}}</a>
     {{/link-to}}
   {{/each}}

@@ -1,4 +1,4 @@
-<h1>{{table_name}}</h1>
+<h1>{{table_name}} {{#if template}}<small>Template: <strong>{{template}}</strong></small>{{/if}}</h1>
 
 <table class="table table-striped table-bordered table-hover table-condensed">
   <thead>
@@ -15,7 +15,12 @@
       <tr>
         {{#each options.columns as |column|}}
           <td>
-            {{data-table-field record=record column=column options=options table_name=table_name}}
+            {{data-table-field
+              record=record
+              column=column
+              options=options
+              table_name=table_name
+              template=template}}
           </td>
         {{/each}}
       </tr>

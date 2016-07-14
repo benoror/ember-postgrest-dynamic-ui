@@ -9,7 +9,9 @@ export default Ember.Mixin.create({
   postgrest: inject.service(),
 
   getTables() {
-    return get(this, 'postgrest').request('/');
+    return get(this, 'postgrest').request('/').then((tables) => {
+      return tables.filter((table) => table.name.indexOf('meta_') !== 0);
+    });
   },
 
   getOptions(table_name) {
@@ -30,8 +32,28 @@ export default Ember.Mixin.create({
     });
   },
 
+  getTemplates(table_name) {
+    return get(this, 'postgrest')
+      .request(`/meta_fields_templates?table_name=eq.${table_name}`);
+  },
+
+  getTemplate(table_name, template) {
+    if(template === 'default') {
+      return undefined;
+    }
+
+    return get(this, 'postgrest')
+      .request(`/meta_fields_templates?table_name=eq.${table_name}&id=eq.${template}`, {
+        headers: {
+          'Prefer': 'plurality=singular'
+        }
+      }).then((row) => row.template);
+    // return get(this, 'postgrest')
+    //   .request(`/templates/${table_name}/${id}.json`);
+  },
+
   setupFields(model) {
-    return model.fields || model.options.columns.map((field) => {
+    return model.template || model.options.columns.map((field) => {
       return {
         key: field.name,
         type: 'input', //field.type

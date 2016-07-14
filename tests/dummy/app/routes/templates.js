@@ -4,16 +4,15 @@ import PostgRESTRouteMixin from 'ember-postgrest-dynamic-ui/mixins/postgrest-rou
 const {
   RSVP,
   set,
-  inject
+  computed
 } = Ember;
 
 export default Ember.Route.extend(PostgRESTRouteMixin, {
   model(params) {
     return RSVP.hash({
       table_name: params.table_name,
-      template: params.template,
-      options: this.getOptions(params.table_name),
-      records: this.getRecords(params.table_name)
+      options: this.getOptions('meta_fields_templates'),
+      records: this.getTemplates(params.table_name)
     });
   },
 

@@ -12,25 +12,8 @@ export default Ember.Route.extend(PostgRESTRouteMixin, {
   model(params) {
     return RSVP.hash({
       options: this.getOptions(params.table_name),
-      record: this.getRecord(params.table_name, params.id)
-      // fields: [
-      //   {
-      //     key: 'title',
-      //     type: 'input',
-      //     templateOptions: {
-      //       type: 'text',
-      //       label: 'El Titulo'
-      //     }
-      //   },
-      //   {
-      //     key: 'director',
-      //     type: 'input',
-      //     templateOptions: {
-      //       type: 'text',
-      //       label: 'El Mero Mero Director'
-      //     }
-      //   }
-      // ]
+      record: this.getRecord(params.table_name, params.id),
+      template: this.getTemplate(params.table_name, params.template)
     });
   },
 

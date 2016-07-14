@@ -1,0 +1,10 @@
+<h1>Templates <small>for: <strong>{{table_name}}</strong></small></h1>
+
+<hr>
+
+<ul>
+  <li>{{link-to 'default' 'table' table_name 'default'}}</li>
+  {{#each records as |record|}}
+    <li>{{link-to record.description 'table' table_name record.id}}</li>
+  {{/each}}
+</ul>
