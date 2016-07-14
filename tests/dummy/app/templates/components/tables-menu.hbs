@@ -1,3 +1,10 @@
-{{#each tables as |table|}}
-  <li>{{#link-to 'table' table.name}}{{table.name}}{{/link-to}}</li>
-{{/each}}
+<h3>Default Views</h3>
+
+<ul class="nav nav-sidebar">
+  {{#each tables as |table|}}
+    {{!-- <li class="active"><a href="#">Overview <span class="sr-only">(current)</span></a></li> --}}
+    {{#link-to 'table' table.name tagName="li" href=false}}
+      <a {{bind-attr href="view.href"}} style="cursor:pointer;">{{table.name}}</a>
+    {{/link-to}}
+  {{/each}}
+</ul>
