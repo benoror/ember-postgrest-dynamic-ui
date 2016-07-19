@@ -1,6 +1,12 @@
 # Ember PostgREST Dynamic UI
 
-This README outlines the details of collaborating on this Ember addon.
+Dynamic UI in Ember powered by [PostgREST](http://postgrest.com/) and [Ember Formly](https://github.com/formly-js/ember-formly)
+
+## Video Demo
+
+
+
+[![Ember PostgREST Dynamic UI](http://i.imgur.com/jAVeFAT.png)](https://www.youtube.com/watch?v=BJz3ROHPwKU)
 
 ## Installation
 
