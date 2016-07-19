@@ -54,11 +54,37 @@ export default Ember.Mixin.create({
 
   setupFields(model) {
     return model.template || model.options.columns.map((field) => {
+      let type;
+      switch(field.type) {
+        case 'integer':
+        case 'decimal':
+        case 'numeric':
+        case 'real':
+        case 'money':
+          type = 'number';
+          break;
+        case 'date':
+          type = 'date';
+          break;
+        case 'time':
+        case 'time without time zone':
+          type = 'time';
+          break;
+        case 'timestamp':
+          type = 'datetime';
+          break;
+        case 'boolean':
+          type = 'checkbox';
+          break;
+        default:
+          type = 'text';
+          break;
+      }
       return {
         key: field.name,
         type: 'input', //field.type
         templateOptions: {
-          type: 'text',
+          type,
           label: Ember.String.capitalize(field.name),
           placeholder: Ember.String.capitalize(field.name)
         }
